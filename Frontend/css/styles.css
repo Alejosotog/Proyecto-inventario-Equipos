@@ -1,0 +1,325 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+body.background-page {
+    background-image: url('Equipos.png');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+/* Contact header bar */
+.contact-header {
+    background-color: #3d4b8b;
+    color: white;
+    padding: 12px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.contact-info {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.contact-item {
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.icon-location,
+.icon-phone {
+    font-size: 1.1em;
+}
+
+.contact-social {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.social-icon {
+    display: inline-flex;
+    width: 32px;
+    height: 32px;
+    background-color: white;
+    color: #3d4b8b;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+    background-color: #f0f0f0;
+}
+
+.btn-posf {
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-posf:hover {
+    background-color: #e68900;
+}
+
+
+.header-bar {
+    background-color: #3c8dbc;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+.page-title {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+.subheader {
+    padding: 10px 0 10px 1.5cm;
+    font-size: 1em;
+    color: #333;
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+input {
+    display: block;
+    margin: 10px auto;
+    padding: 8px;
+    width: 90%;
+    box-sizing: border-box;
+}
+
+/* Form container styles */
+.form-container {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    margin: 50px auto;
+    max-width: 400px;
+    text-align: center;
+}
+
+.form-container h1,
+.form-container h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.form-container input {
+    margin: 12px auto;
+    padding: 10px;
+    width: 100%;
+    font-size: 0.95em;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-container button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    background-color: #3c8dbc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form-container button:hover {
+    background-color: #2c6a8a;
+}
+
+.form-links {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn-link {
+    padding: 10px 20px;
+    background-color: #3c8dbc;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.btn-link:hover {
+    background-color: #2c6a8a;
+}
+
+.form-link {
+    margin-top: 15px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.form-link a {
+    color: #3c8dbc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.form-link a:hover {
+    text-decoration: underline;
+}
+
+/* dashboard specific styles */
+.range-inputs {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* period picker on inventory page */
+#periodControls {
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+}
+#periodControls input {
+    margin-right: 5px;
+}
+#gotoDashboard {
+    padding: 6px 14px;
+    background-color: #3c8dbc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#gotoDashboard:hover {
+    background-color: #2c6a8a;
+}
+
+.range-inputs label {
+    display: block;
+    margin: 5px 0;
+    font-size: 0.95em;
+}
+
+.stats p {
+    font-size: 1.1em;
+    margin: 8px 0;
+}
+
+.range-inputs button {
+    margin-top: 10px;
+    padding: 6px 14px;
+    background-color: #3c8dbc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.range-inputs button:hover {
+    background-color: #2c6a8a;
+}
+
+.main-content {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+#formContainer {
+    background: white;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    flex: 0 0 220px;
+}
+
+#dataContainer {
+    flex: 1;
+    overflow-x: auto;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    table-layout: auto;
+}
+
+table th, table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+    word-wrap: break-word;
+}
+
+table th {
+    background-color: #a7d0cd;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+table th:nth-child(1), table td:nth-child(1) { width: 12%; } /* Nombre */
+table th:nth-child(2), table td:nth-child(2) { width: 10%; } /* Serial */
+table th:nth-child(3), table td:nth-child(3) { width: 10%; } /* Modelo */
+table th:nth-child(4), table td:nth-child(4) { width: 12%; } /* Propietario */
+table th:nth-child(5), table td:nth-child(5) { width: 10%; } /* Magnitud */
+table th:nth-child(6), table td:nth-child(6) { width: 12%; } /* Rango Trabajo */
+table th:nth-child(7), table td:nth-child(7) { width: 12%; } /* Rango Operación */
+table th:nth-child(8), table td:nth-child(8) { width: 8%; text-align: center; } /* Calibrado */
+
+/* tooltip for Caudalímetro image */
+.tooltip-container {
+    margin-left: 1.5cm;
+    font-size: 1rem;
+}
+
+.tooltip {
+    position: relative;
+    cursor: pointer;
+    color: #007BFF;
+    text-decoration: underline;
+}
+
+.tooltip-img {
+    display: none;
+    position: absolute;
+    top: 1.2em;
+    left: 0;
+    max-width: 200px;
+    border: 1px solid #ccc;
+    background: white;
+    padding: 5px;
+    z-index: 1000;
+}
+
+.tooltip:hover .tooltip-img {
+    display: block;
+}

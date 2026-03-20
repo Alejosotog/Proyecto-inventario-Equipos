@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Inventario</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="header-bar">
+        <h1 class="page-title">Inventario de Equipos</h1>
+    </div>
+    <div class="subheader">
+        <span>Fecha de hoy</span>
+        <span id="currentDate"></span>
+    </div>
+
+
+
+<div class="main-content">
+
+    <div id="formContainer">
+
+        <!-- hidden id field used when editing -->
+        <input type="hidden" id="equipoId">
+
+        <input type="text" id="nombreEquipo" placeholder="Nombre">
+        <input type="text" id="serial" placeholder="Serial">
+        <input type="text" id="modelo" placeholder="Modelo">
+        <input type="text" id="propietario" placeholder="Propietario">
+        <input type="text" id="magnitud" placeholder="Magnitud">
+        <input type="text" id="rangoTrabajo" placeholder="Rango de Trabajo">
+        <input type="text" id="rangoOperacion" placeholder="Rango de Operación">
+
+        <!-- 🔥 SELECTS PROFESIONALES -->
+        <select id="categoria">
+            <option value="">Seleccione Categoría</option>
+        </select>
+
+        <select id="marca">
+            <option value="">Seleccione Marca</option>
+        </select>
+
+        <select id="proveedor">
+            <option value="">Seleccione Proveedor</option>
+        </select>
+
+        <button type="button" onclick="agregarEquipo()">Agregar</button>
+        <button id="cancelEdit" style="display:none;" onclick="cancelarEdicion()">Cancelar</button>
+
+    </div>
+
+    <div id="dataContainer">
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Serial</th>
+                <th>Modelo</th>
+                <th>Propietario</th>
+                <th>Magnitud</th>
+                <th>Rango Trabajo</th>
+                <th>Rango Operación</th>
+                <th>Categoría</th>
+                <th>Marca</th>
+                <th>Proveedor</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody id="tablaEquipos"></tbody>
+        </table>
+    </div>
+
+</div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

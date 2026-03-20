@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="background-page">
+    <div class="contact-header">
+        <div class="contact-info">
+            <span class="contact-item"><i class="icon-location">📍</i> Carrera 75 #21-42</span>
+            <span class="contact-item"><i class="icon-phone">📱</i> 3007689243</span>
+        </div>
+        <div class="contact-social">
+            <a href="https://facebook.com" target="_blank" class="social-icon">f</a>
+            <a href="https://instagram.com" target="_blank" class="social-icon">📷</a>
+            <a href="https://linkedin.com" target="_blank" class="social-icon">in</a>
+            <button class="btn-posf">POSF</button>
+        </div>
+    </div>
+
+    <div class="form-container" id="dashboardStats">
+        <h2>Dashboard de Calibraciones</h2>
+        <div class="range-inputs">
+            <label>Desde: <input type="date" id="rangeStart"></label><br>
+            <label>Hasta: <input type="date" id="rangeEnd"></label><br>
+            <button id="applyRange">Aplicar periodo</button>
+        </div>
+        <div class="stats">
+            <p>Total equipos registrados: <span id="totalCount">0</span></p>
+            <p>Equipos calibrados: <span id="calibratedCount">0</span></p>
+            <p>Equipos pendientes: <span id="pendingCount">0</span></p>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
