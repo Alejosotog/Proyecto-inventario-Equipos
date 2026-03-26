@@ -11,6 +11,16 @@ CREATE TABLE marcas (
     nombre VARCHAR(100) NOT NULL
 );
 
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    rol ENUM('admin','tecnico','usuario') DEFAULT 'usuario',
+    estado BOOLEAN DEFAULT TRUE,
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE proveedores (
     id_proveedor INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(150),

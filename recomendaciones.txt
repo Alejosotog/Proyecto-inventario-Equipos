@@ -1,0 +1,6 @@
+Recomendaciones:
+insertar proveedores, categoría y marca como inputs o crear un administrador.
+Panel superior con marca, proveedor,categoría
+Un boton de detalles para ver la ficha te´cnica
+En fecha hoy, admisitradores de marca, proveedores y categorias
+Al lado del  
