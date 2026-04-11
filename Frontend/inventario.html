@@ -12,20 +12,20 @@
 
 
 <div class="nav-menu">
-    <a href="dashboard.html">Inicio</a>
+    <a href="inventario.html">Inicio</a>
 
     <div class="dropdown">
         <button class="dropbtn">Administración ▼</button>
         <div class="dropdown-content">
-            <a href="#">Categorías</a>
-            <a href="#">Marcas</a>
-            <a href="#">Proveedores</a>
+            <a href="categorias.html">Categorías</a>
+            <a href="marcas.html">Marcas</a>
+            <a href="proveedores.html">Proveedores</a>
         </div>
     </div>
 
-    <a href="#">Préstamos</a>
+    <a href="prestamos.html">Préstamos</a>
     <a href="dashboard.html">Dashboard</a>
-    <a href="#">Usuarios / Responsables</a>
+    <a href="usuarios.html">Usuarios / Responsables</a>
 </div>
 
 
@@ -44,7 +44,6 @@
         <input type="text" id="rangoTrabajo" placeholder="Rango de Trabajo">
         <input type="text" id="rangoOperacion" placeholder="Rango de Operación">
 
-        <!-- 🔥 SELECTS PROFESIONALES -->
         <select id="categoria">
             <option value="">Seleccione Categoría</option>
         </select>
@@ -57,8 +56,8 @@
             <option value="">Seleccione Proveedor</option>
         </select>
 
-        <button type="button" onclick="agregarEquipo()">Agregar</button>
-        <button id="cancelEdit" style="display:none;" onclick="cancelarEdicion()">Cancelar</button>
+        <button id="btnGuardar" onclick="agregarEquipo()">Guardar</button>
+        <button type="button" onclick="limpiarFormulario()">Cancelar</button>
 
     </div>
 
@@ -86,5 +85,7 @@
 </div>
 
     <script src="js/script.js"></script>
+    
+    <div id="tooltipImg"></div>
 </body>
 </html>

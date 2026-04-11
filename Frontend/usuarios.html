@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Usuarios</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="header-bar">
+    <h1 class="page-title">Usuarios / Responsables</h1>
+</div>
+
+<div class="nav-menu">
+    <a href="inventario.html">Inicio</a>
+
+    <div class="dropdown">
+        <button class="dropbtn">Administración ▼</button>
+        <div class="dropdown-content">
+            <a href="categorias.html">Categorías</a>
+            <a href="marcas.html">Marcas</a>
+            <a href="proveedores.html">Proveedores</a>
+        </div>
+    </div>
+
+    <a href="#">Préstamos</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="usuarios.html">Usuarios / Responsables</a>
+</div>
+
+<div class="main-content">
+
+    <!-- TABLA -->
+    <div id="dataContainer" class="usuarios-tabla">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Correo Elctrónico</th>
+                </tr>
+            </thead>
+            <tbody id="tablaUsuarios"></tbody>
+        </table>
+    </div>
+
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

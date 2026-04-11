@@ -1,37 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
     <title>Dashboard</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- ICONOS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- 🔥 FALTABA ESTO -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="background-page">
-    <div class="contact-header">
-        <div class="contact-info">
-            <span class="contact-item"><i class="icon-location">📍</i> Carrera 75 #21-42</span>
-            <span class="contact-item"><i class="icon-phone">📱</i> 3007689243</span>
-        </div>
-        <div class="contact-social">
-            <a href="https://facebook.com" target="_blank" class="social-icon">f</a>
-            <a href="https://instagram.com" target="_blank" class="social-icon">📷</a>
-            <a href="https://linkedin.com" target="_blank" class="social-icon">in</a>
-            <button class="btn-posf">POSF</button>
-        </div>
+
+<body class="dashboard-page">
+
+<div class="dashboard-container">
+
+    <h1>📊 Dashboard Inventario</h1>
+
+    <!-- FILTROS -->
+    <div class="filtros">
+        <select id="filtroCategoria">
+            <option value="">Todas las categorías</option>
+        </select>
+
+        <select id="filtroMarca">
+            <option value="">Todas las marcas</option>
+        </select>
     </div>
 
-    <div class="form-container" id="dashboardStats">
-        <h2>Dashboard de Calibraciones</h2>
-        <div class="range-inputs">
-            <label>Desde: <input type="date" id="rangeStart"></label><br>
-            <label>Hasta: <input type="date" id="rangeEnd"></label><br>
-            <button id="applyRange">Aplicar periodo</button>
+    <!-- CARDS -->
+    <div class="cards">
+
+        <div class="card kpi">
+            <i class="fas fa-box icon"></i>
+            <h3>Total Equipos</h3>
+            <p id="totalEquipos"></p>
         </div>
-        <div class="stats">
-            <p>Total equipos registrados: <span id="totalCount">0</span></p>
-            <p>Equipos calibrados: <span id="calibratedCount">0</span></p>
-            <p>Equipos pendientes: <span id="pendingCount">0</span></p>
+
+        <div class="card kpi">
+            <i class="fas fa-layer-group icon"></i>
+            <h3>Categorías</h3>
+            <p id="totalCategorias"></p>
         </div>
+
+        <div class="card kpi">
+            <i class="fas fa-tags icon"></i>
+            <h3>Marcas</h3>
+            <p id="totalMarcas"></p>
+        </div>
+
+        <div class="card kpi">
+            <i class="fas fa-users icon"></i>
+            <h3>Propietarios</h3>
+            <p id="totalPropietarios"></p>
+        </div>
+
     </div>
 
-    <script src="js/script.js"></script>
+    <!-- GRÁFICOS -->
+    <div class="grid-graficos">
+        <canvas id="graficoCategoria"></canvas>
+        <canvas id="graficoMarca"></canvas>
+        <canvas id="graficoPropietario"></canvas>
+        <canvas id="graficoMagnitud"></canvas>
+    </div>
+
+    <button onclick="exportarExcel()">Exportar a Excel</button>
+
+</div>
+
+
+<script src="js/dashboard.js"></script>
+
 </body>
+
 </html>
+

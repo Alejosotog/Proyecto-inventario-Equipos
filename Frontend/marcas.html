@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Categorías</title>
+    <title>Marcas</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -13,31 +13,26 @@
     <aside class="sidebar">
         <h2>Inventario</h2>
         <a href="inventario.html">Inventario</a>
-        <a href="categorias.html" class="active">Categorías</a>
-        <a href="marcas.html">Marcas</a>
+        <a href="categorias.html">Categorías</a>
+        <a href="marcas.html" class="active">Marcas</a>
         <a href="proveedores.html">Proveedores</a>
     </aside>
 
     <!-- CONTENIDO -->
     <main class="main">
 
-        <h1>Gestión de Categorías</h1>
+        <h1>Gestión de Marcas</h1>
 
         <!-- FORM -->
         <div class="card">
-            <h2>Nueva Categoría</h2>
+            <h2>Nueva Marca</h2>
 
             <div class="form-grid">
-                <input type="text" id="nombre" placeholder="Nombre de la categoría">
-                <input type="text" id="descripcion" placeholder="Descripción">
-                <select id="estado">
-                    <option value="Activo">Activo</option>
-                    <option value="Inactivo">Inactivo</option>
-                </select>
+                <input type="text" id="nombre" placeholder="Nombre de la marca">
             </div>
 
-            <button class="btn-primary" onclick="guardarCategoria()">
-                Guardar Categoría
+            <button class="btn-primary" onclick="guardarMarca()">
+                Guardar Marca
             </button>
         </div>
 
@@ -50,11 +45,9 @@
                     <tr>
                         <th>ID</th>
                         <th>Nombre</th>
-                        <th>Descripción</th>
-                        <th>Estado</th>
                     </tr>
                 </thead>
-                <tbody id="tablaCategorias"></tbody>
+                <tbody id="tablaMarcas"></tbody>
             </table>
 
         </div>
@@ -63,6 +56,6 @@
 
 </div>
 
-<script src="js/categorias.js"></script>
+<script src="js/marcas.js"></script>
 </body>
 </html>

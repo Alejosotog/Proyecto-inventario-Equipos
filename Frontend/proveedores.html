@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Proveedores</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <h2>Inventario</h2>
+        <a href="inventario.html">Inventario</a>
+        <a href="categorias.html">Categorías</a>
+        <a href="marcas.html">Marcas</a>
+        <a href="proveedores.html" class="active">Proveedores</a>
+    </aside>
+
+    <!-- CONTENIDO -->
+    <main class="main">
+
+        <h1>Gestión de Proveedores</h1>
+
+        <!-- FORM -->
+        <div class="card form-card">
+            <h2>Nuevo Proveedor</h2>
+
+            <div class="form-grid">
+                <input type="text" id="nombre" placeholder="Nombre del proveedor">
+                <input type="text" id="telefono" placeholder="Teléfono">
+                <input type="email" id="email" placeholder="Correo electrónico">
+            </div>
+
+            <button class="btn-primary" onclick="guardarProveedor()">
+                Guardar Proveedor
+            </button>
+        </div>
+
+        <!-- TABLA -->
+        <div class="card table-card">
+            <h2>Listado</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Teléfono</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaProveedores"></tbody>
+            </table>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="js/proveedores.js"></script>
+</body>
+</html>
