@@ -1,3 +1,4 @@
+console.log("🔥 SCRIPT CARGADO");
 const API = "http://localhost:3000/api";
 
 let idEditar = null;
@@ -73,8 +74,18 @@ function login() {
     })
     .then(res => res.json())
     .then(data => {
-        if (data.success) window.location.href = "inventario.html";
-        else alert("Credenciales incorrectas");
+        if (data.success) {
+
+            localStorage.setItem("logueado", "true");
+
+            // 🔥 GUARDAR EMAIL
+            const email = document.getElementById("loginEmail").value;
+            localStorage.setItem("usuarioEmail", email);
+
+            window.location.href = "inventario.html";
+        } else {
+            alert("Credenciales incorrectas");
+        }
     });
 }
 
@@ -419,12 +430,6 @@ function eliminarProveedor(id) {
         .then(() => cargarProveedoresTabla());
 }
 
-/* ================= INICIO ================= */
-
-window.onload = function () {
-    tooltip = document.getElementById("tooltipImg");
-    cargarEquipos();
-    cargarCombos();
 
     /* ================= VALIDACIONES EN TIEMPO REAL ================= */
 
@@ -504,7 +509,6 @@ if (passwordInput) {
     cargarMarcasTabla();
     cargarProveedoresTabla();
     cargarUsuarios();
-};
 
 /* ================= MOSTRAR USUARIOS ================= */
 
@@ -531,14 +535,6 @@ function cargarUsuarios() {
         .catch(err => console.error("Error:", err));
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-
-    if (document.getElementById("tablaUsuarios")) {
-        cargarUsuarios();
-    }
-
-});
-
 /* ================= EVALUAR FUERZA PASSWORD ================= */
 
 function evaluarPassword(password) {
@@ -557,15 +553,15 @@ function evaluarPassword(password) {
 
 function registrarPrestamo() {
 
-    const id_equipo = document.getElementById("equipoPrestamo").value;
-    const id_usuario = document.getElementById("usuarioPrestamo").value;
+    const id = document.getElementById("serialEquipo").value;
 
-    console.log("EQUIPO:", id_equipo);
-    console.log("USUARIO:", id_usuario);
+    const nombre = document.getElementById("nombreUsuario").value;  
+    const area = document.getElementById("areaUsuario").value;
+    const fecha = document.getElementById("fechaPrestamo").value;
+    const actividad = document.getElementById("actividad").value;
 
-    // 🔥 VALIDACIÓN CLAVE
-    if (!id_equipo || !id_usuario) {
-        alert("Debe seleccionar equipo y usuario");
+    if (!id) {
+        alert("Seleccione un equipo y serial");
         return;
     }
 
@@ -573,16 +569,22 @@ function registrarPrestamo() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-            id_equipo: parseInt(id_equipo),
-            id_usuario: parseInt(id_usuario)
+            id_equipo: parseInt(id),
+            nombre,
+            area,
+            fecha_prestamo: fecha,
+            actividad
         })
     })
     .then(res => res.text())
     .then(data => {
-        alert(data);
+        alert("Préstamo registrado ✅");
         cargarPrestamos();
     })
-    .catch(err => console.error(err));
+    .catch(err => {
+        console.error(err);
+        alert("Error al registrar préstamo");
+    });
 }
 
 /* ================= MOSTRAR PRÉSTAMOS ================= */
@@ -592,24 +594,25 @@ function cargarPrestamos() {
     fetch(API + "/prestamos")
         .then(res => res.json())
         .then(data => {
-    
-            console.log("DATOS PRESTAMOS:", data); // 🔥 AGREGAR ESTO   
+
+            console.log("DATOS PRESTAMOS:", data);
+
             const tabla = document.getElementById("tablaPrestamos");
+
             if (!tabla) return;
 
             tabla.innerHTML = "";
 
             data.forEach(p => {
                 tabla.innerHTML += `
-                    <tr>
-                        <td>${p.equipo}</td>
-                        <td>${p.usuario}</td>
-                        <td>${new Date(p.fecha_prestamo).toLocaleString()}</td>
-                        <td>${p.estado}</td>
-                        <td>
-                            <button onclick="devolver(${p.id_prestamo})">Devolver</button>
-                        </td>
-                    </tr>
+                <tr>
+                    <td>${p.equipo}</td>
+                    <td>${p.serial}</td>
+                    <td>${p.nombre}</td>
+                    <td>${p.area}</td>
+                    <td>${new Date(p.fecha_prestamo).toLocaleString()}</td>
+                    <td>${p.actividad}</td>
+                </tr>
                 `;
             });
 
@@ -626,44 +629,8 @@ function devolver(id) {
     .then(() => cargarPrestamos());
 }
 
-function cargarCombosPrestamos() {
-
-    fetch(API + "/equipos")
-        .then(res => res.json())
-        .then(data => {
-            const combo = document.getElementById("equipoPrestamo");
-            if (!combo) return;
-
-            combo.innerHTML = "<option value=''>Seleccione Equipo</option>";
-
-            data.forEach(e => {
-                combo.innerHTML += `<option value="${e.id_equipo}">${e.nombre}</option>`;
-            });
-        });
-
-    fetch(API + "/usuarios")
-        .then(res => res.json())
-        .then(data => {
-            const combo = document.getElementById("usuarioPrestamo");
-            if (!combo) return;
-
-            combo.innerHTML = "<option value=''>Seleccione Usuario</option>";
-
-            data.forEach(u => {
-                combo.innerHTML += `<option value="${u.id}">${u.nombre}</option>`;
-            });
-        });
-}
 
 
-document.addEventListener("DOMContentLoaded", () => {
-
-    if (document.getElementById("tablaPrestamos")) {
-        cargarPrestamos();
-        cargarCombosPrestamos();
-    }
-
-});
 
 function formatearNombre(nombre) {
     return nombre
@@ -694,3 +661,141 @@ document.addEventListener("mouseout", function(e) {
         tooltip.style.display = "none";
     }
 });
+
+let equiposGlobal = [];
+
+function cargarCombosPrestamos() {
+
+    console.log("🔥 FUNCION EJECUTADA");
+
+    fetch(API + "/equipos")
+        .then(res => res.json())
+        .then(data => {
+
+            console.log("EQUIPOS:", data);
+
+            equiposGlobal = data;
+
+            const combo = document.getElementById("equipoPrestamo");
+            if (!combo) return;
+
+            combo.innerHTML = "<option value=''>Seleccione Equipo</option>";
+
+            const nombresUnicos = [...new Set(data.map(e => e.nombre))];
+
+            nombresUnicos.forEach(nombre => {
+                combo.innerHTML += `<option value="${nombre}">${nombre}</option>`;
+            });
+
+        })
+        .catch(err => console.error("Error cargando equipos:", err));
+}
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    console.log("🔥 DOM CARGADO");
+
+    const pagina = window.location.pathname;
+
+    // 🔐 SOLO validar si NO es login
+    if (!pagina.includes("login.html")) {
+        if (localStorage.getItem("logueado") !== "true") {
+            window.location.href = "login.html";
+            return;
+        }
+    }
+
+    initUserMenu();
+
+    tooltip = document.getElementById("tooltipImg");
+
+    cargarEquipos();
+    cargarCombos();
+
+    // 🔥 PRÉSTAMOS
+    if (document.getElementById("equipoPrestamo")) {
+        cargarCombosPrestamos();
+
+        const equipoSelect = document.getElementById("equipoPrestamo");
+
+        equipoSelect.addEventListener("change", function () {
+
+            const nombreSeleccionado = this.value;
+            const serialCombo = document.getElementById("serialEquipo");
+
+            serialCombo.innerHTML = "<option value=''>Seleccione Serial</option>";
+
+            const filtrados = equiposGlobal.filter(e => e.nombre === nombreSeleccionado);
+
+            filtrados.forEach(e => {
+                serialCombo.innerHTML += `
+                    <option value="${e.id}">
+                        ${e.serial}
+                    </option>
+                `;
+            });
+        });
+    }
+
+    if (document.getElementById("tablaPrestamos")) {
+        cargarPrestamos();
+    }
+
+});
+
+
+function cargarEquiposPrestamo() {
+
+    fetch(API + "/equipos")
+        .then(res => res.json())
+        .then(data => {
+
+            const select = document.getElementById("serialEquipo");
+            if (!select) return;
+
+            select.innerHTML = "<option value=''>Seleccione equipo</option>";
+
+            data.forEach(e => {
+                select.innerHTML += `
+                    <option value="${e.id}">
+                        ${e.nombre} - ${e.serial}
+                    </option>
+                `;
+            });
+
+        })
+        .catch(err => console.error(err));
+}
+
+function cerrarSesion() {
+    localStorage.clear();
+    window.location.href = "login.html";
+}
+
+
+function initUserMenu() {
+
+    const emailSpan = document.getElementById("userEmail");
+    const dropdown = document.getElementById("dropdownMenu");
+
+    if (!emailSpan || !dropdown) return;
+
+    // 🔥 Mostrar email
+    const email = localStorage.getItem("usuarioEmail") || "Usuario";
+    emailSpan.textContent = email + " ⌄";
+
+    // 🔥 Toggle dropdown
+    emailSpan.addEventListener("click", () => {
+        dropdown.style.display =
+            dropdown.style.display === "block" ? "none" : "block";
+    });
+
+    // 🔥 Cerrar si hace click afuera
+    document.addEventListener("click", (e) => {
+        if (!e.target.closest(".user-menu")) {
+            dropdown.style.display = "none";
+        }
+    });
+}

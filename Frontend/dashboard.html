@@ -6,20 +6,25 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- ICONOS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <!-- 🔥 FALTABA ESTO -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body class="dashboard-page">
 
+<div class="header-bar">
+    <h1 class="page-title">📊 Dashboard Inventario</h1>
+
+    <div class="user-menu">
+        <span id="userEmail"></span>
+        <div class="dropdown" id="dropdownMenu">
+            <button onclick="cerrarSesion()">Cerrar sesión</button>
+        </div>
+    </div>
+</div>
+
 <div class="dashboard-container">
-
-    <h1>📊 Dashboard Inventario</h1>
-
-    <!-- FILTROS -->
     <div class="filtros">
         <select id="filtroCategoria">
             <option value="">Todas las categorías</option>
@@ -30,7 +35,6 @@
         </select>
     </div>
 
-    <!-- CARDS -->
     <div class="cards">
 
         <div class="card kpi">
@@ -72,8 +76,8 @@
 </div>
 
 
+<script src="js/dashboard.js"></script><script src="js/script.js"></script>
 <script src="js/dashboard.js"></script>
-
 </body>
 
 </html>

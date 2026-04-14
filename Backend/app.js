@@ -170,62 +170,6 @@ app.post("/api/marcas", (req, res) => {
 });
 
 
-/* ================= REGISTRAR PRÉSTAMO ================= */
-
-app.post("/api/prestamos", (req, res) => {
-
-    const { id_equipo, id_usuario } = req.body;
-
-    const query = `
-        INSERT INTO prestamos (id_equipo, id_usuario)
-        VALUES (?, ?)
-    `;
-
-    db.query(query, [id_equipo, id_usuario], (err) => {
-        if (err) return res.status(500).send(err);
-        res.send("Préstamo registrado");
-    });
-});
-
-/* ================= MOSTRAR PRÉSTAMOS ================= */
-
-app.get("/api/prestamos", (req, res) => {
-
-    const query = `
-        SELECT 
-            p.id_prestamo,
-            e.nombre AS equipo,
-            u.nombre AS usuario,
-            p.fecha_prestamo,
-            p.estado
-        FROM prestamos p
-        LEFT JOIN equipos e ON p.id_equipo = e.id_equipo
-        LEFT JOIN usuarios u ON p.id_usuario = u.id
-    `;
-
-    db.query(query, (err, results) => {
-        if (err) return res.status(500).send(err);
-        res.json(results);
-    });
-});
-
-
-/* ================= DEVOLVER EQUIPO ================= */
-
-
-app.put("/api/prestamos/:id", (req, res) => {
-
-    const query = `
-        UPDATE prestamos 
-        SET estado='Devuelto', fecha_devolucion=NOW()
-        WHERE id_prestamo=?
-    `;
-
-    db.query(query, [req.params.id], (err) => {
-        if (err) return res.status(500).send(err);
-        res.send("Equipo devuelto");
-    });
-});
 
 /* ================= PROVEEDORES ================= */
 
@@ -353,7 +297,14 @@ app.delete("/api/equipos/:id", (req, res) => {
     );
 });
 
+
+/* ================= RUTAS PRESTAMOS ================= */
+const prestamosRoutes = require("./routes/prestamosRoutes");
+
+app.use("/api", prestamosRoutes);
+
 /* ================= SERVIDOR ================= */
 app.listen(3000, () => {
     console.log("🚀 Servidor corriendo en http://localhost:3000");
 });
+

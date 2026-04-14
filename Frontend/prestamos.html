@@ -8,38 +8,68 @@
 <body>
 
 <div class="header-bar">
+
     <h1 class="page-title">Préstamos de Equipos</h1>
+
+    <div class="user-menu">
+        <span id="userEmail"></span>
+        <div class="dropdown" id="dropdownMenu">
+            <button onclick="cerrarSesion()">Cerrar sesión</button>
+        </div>
+    </div>
+
 </div>
 
-<div class="main-content">
+<div class="card">
+    <h2>Registrar Préstamo</h2>
 
-    <div id="formContainer">
-        <h3>Registrar Préstamo</h3>
+    <div class="form-grid">
 
+        <!-- EQUIPO -->
         <select id="equipoPrestamo"></select>
-        <select id="usuarioPrestamo"></select>
+        <select id="serialEquipo" placeholder="Serial del Equipo"></select>
 
-        <button onclick="registrarPrestamo()">Prestar</button>
+        <!-- USUARIO -->
+        <input type="text" id="nombreUsuario" placeholder="Nombre completo del Colaborador">
+        <input type="text" id="areaUsuario" placeholder="Área / Departamento">
+
+
+
+        <!-- FECHA Y HORA -->
+        <input type="datetime-local" id="fechaPrestamo">
+
+        <!-- ACTIVIDAD -->
+        <input type="text" id="actividad" placeholder="Actividad a desarrollar">
+
     </div>
 
-    <div id="dataContainer">
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Equipo</th>
-                    <th>Usuario</th>
-                    <th>Fecha</th>
-                    <th>Estado</th>
-                    <th>Acción</th>
-                </tr>
-            </thead>
-            <tbody id="tablaPrestamos"></tbody>
-        </table>
-    </div>
-
+    <button class="btn-primary" onclick="registrarPrestamo()">
+        Registrar Préstamo
+    </button>
 </div>
 
-<script src="js/script.js"></script>
 
-</body>
+
+<div class="card">
+    <h2>Listado de Préstamos</h2>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Equipo</th>
+                <th>Serial</th>
+                <th>Colaborador</th>
+                <th>Área/Departamento</th>
+                <th>Fecha</th>
+                <th>Actividad</th>
+            </tr>
+        </thead>
+        <tbody id="tablaPrestamos"></tbody>
+    </table>
+</div>
+
+        <script src="./js/script.js"></script>
+        <div id="tooltipImg"></div>
+
+    </body>
 </html>
